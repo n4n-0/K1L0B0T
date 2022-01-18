@@ -1,0 +1,6 @@
+{
+  "name": "k1l0-db",
+  "language": "typescript",
+  "manager": "yarn",
+  "prefix": "!"
+}
