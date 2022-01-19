@@ -17,7 +17,7 @@ export default class GuildCreateEvent extends BaseEvent {
   }
   
   async run(client: DiscordClient, guild: Guild) {
-    log(`${colors.black('[')}${colors.cyan('K1L0B0T')}${colors.black(']')} ${colors.cyan(`The bot has connected to the server ${guild.name}`)}`);
+    log(`${colors.white('[')}${colors.cyan('K1L0B0T')}${colors.white(']')} ${colors.cyan(`The bot has connected to the server ${guild.name}`)}`);
 
     const guildConfig = await this.guildConfigRepository.findOne({ guildId: guild.id });
     if (!guildConfig) {

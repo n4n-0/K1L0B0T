@@ -8,6 +8,6 @@ export default class ReadyEvent extends BaseEvent {
     super('ready');
   }
   async run (client: DiscordClient) {
-    log(`${colors.black('[')}${colors.cyan('K1L0B0T')}${colors.black(']')} ${colors.green('The bot has started and is online!')}`);
+    log(`${colors.white('[')}${colors.cyan('K1L0B0T')}${colors.white(']')} ${colors.green('The bot has started and is online!')}`);
   }
 }

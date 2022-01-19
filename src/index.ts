@@ -8,7 +8,11 @@ import { GuildConfiguration } from '../typeorm/entities/GuildConfiguration';
 const colors = require('colors');
 const log = console.log;
 const bot = new DiscordClient({ 
-  intents: [Intents.FLAGS.GUILDS, Intents.FLAGS.GUILD_MESSAGES ] 
+  intents: [
+    Intents.FLAGS.GUILDS, 
+    Intents.FLAGS.GUILD_MESSAGES, 
+    Intents.FLAGS.GUILD_MEMBERS ,
+  ],
 });
 
 (async () => {
