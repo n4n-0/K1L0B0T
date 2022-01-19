@@ -21,13 +21,15 @@ export default class GuildCreateEvent extends BaseEvent {
 
     const guildConfig = await this.guildConfigRepository.findOne({ guildId: guild.id });
     if (!guildConfig) {
+      log(`${colors.white('[')}${colors.cyan('K1L0B0T')}${colors.white(']')} ${colors.cyan(`The bot has created a new configuration for the server ${guild.name}`)}`);
       const newGuildConfig = this.guildConfigRepository.create({
         guildId: guild.id,
       });
-      log(`${colors.black('[')}${colors.cyan('K1L0B0T')}${colors.black(']')} ${colors.cyan(`The bot has created a new configuration for the server ${guild.name}`)}`);
       const savedConfig = await this.guildConfigRepository.save(newGuildConfig);
+      client.configs.set(guild.id, savedConfig);
     } else {
-      log(`${colors.black('[')}${colors.cyan('K1L0B0T')}${colors.black(']')} ${colors.cyan(`The bot has connected to the server ${guild.name} and it already has a configuration`)}`);
+      client.configs.set(guild.id, guildConfig);
+      log(`${colors.white('[')}${colors.cyan('K1L0B0T')}${colors.white(']')} ${colors.cyan(`The bot has connected to the server ${guild.name} and it already has a configuration`)}`);
     }
   }
 }
