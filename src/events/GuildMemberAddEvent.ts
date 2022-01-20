@@ -22,7 +22,6 @@ export default class GuildMemberAddEvent extends BaseEvent {
           .setTitle(`Welcome ${member.user.username} to ${member.guild.name}`)
           .setDescription(`Be sure to read all the rules and most importantly remember to have fun!`)
           .setTimestamp();
-
         channel.send({ embeds: [welcomeEmbed] });
       } else {
         log(`${colors.white('[')}${colors.cyan('K1L0B0T')}${colors.white(']')} ${colors.cyan(`The bot has not found the welcome channel for ${member.guild.name}`)}`);
