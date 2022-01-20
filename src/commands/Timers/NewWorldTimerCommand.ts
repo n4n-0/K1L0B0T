@@ -49,6 +49,17 @@ export default class AsmoTimerCommand extends BaseCommand {
     
               message.channel.send({ embeds: [successEmbed] });
               setTimeout(() => {
+                const checkForEntry = this.newWorldTimerRepository.findOne({ guildId: message.guildId!, username: user, type: 'Asmodeum'}).then(checkForEntry => {
+                  if (checkForEntry) {
+                    this.newWorldTimerRepository.delete({ guildId: message.guildId!, username: user, type: 'Asmodeum'});
+                    const successEmbed = new MessageEmbed()
+                      .setColor('#c73002')
+                      .setTitle(`Your Asmodeum timer has expired!`)
+                      .setDescription(`${message.author}, Your asmodeum timer has expired!`)
+                      .setTimestamp();
+                    message.channel.send({ embeds: [successEmbed] });
+                  }
+                });
               }, 8.64e+7)
             } else {
               const errorEmbed = new MessageEmbed()
@@ -82,6 +93,17 @@ export default class AsmoTimerCommand extends BaseCommand {
     
               message.channel.send({ embeds: [successEmbed] });
               setTimeout(() => {
+                const checkForEntry = this.newWorldTimerRepository.findOne({ guildId: message.guildId!, username: user, type: 'Asmodeum'}).then(checkForEntry => {
+                  if (checkForEntry) {
+                    this.newWorldTimerRepository.delete({ guildId: message.guildId!, username: user, type: 'Asmodeum'});
+                    const successEmbed = new MessageEmbed()
+                      .setColor('#c73002')
+                      .setTitle(`Your Phoenix Weave timer has expired!`)
+                      .setDescription(`${message.author}, Your phoenix weave timer has expired!`)
+                      .setTimestamp();
+                    message.channel.send({ embeds: [successEmbed] });
+                  }
+                });
               }, 8.64e+7)
             } else {
               const errorEmbed = new MessageEmbed()
