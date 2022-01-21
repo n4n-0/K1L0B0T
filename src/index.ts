@@ -6,6 +6,7 @@ import { Collection, Intents } from 'discord.js';
 import { createConnection, getRepository } from 'typeorm';
 import { GuildConfiguration } from '../typeorm/entities/GuildConfiguration';
 import { NewWorldTimers } from '../typeorm/entities/NewWorldTimers';
+import { BanLogConfiguration } from '../typeorm/entities/BanLogConfiguration';
 const colors = require('colors');
 const log = console.log;
 const bot = new DiscordClient({ 
@@ -24,7 +25,7 @@ const bot = new DiscordClient({
     username: process.env.DB_USER,
     database: process.env.DB_NAME,
     synchronize: false,
-    entities: [GuildConfiguration, NewWorldTimers]
+    entities: [GuildConfiguration, NewWorldTimers, BanLogConfiguration]
   });
   const configRepo = getRepository(GuildConfiguration);
   const guildConfigs = await configRepo.find();
