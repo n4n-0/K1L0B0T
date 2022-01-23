@@ -10,3 +10,19 @@
     </a>
 </p>
 ---
+## About:
+**K1L0B0T** is a bot I designed to further develop my javascript/ typescript abilities. This bot is capable of joining multiple server allowing them to each
+have their own configurations. The bot is still very new right now and if you invite it to you server expect frequent updates. This is also 100% open source so feel free to deploy it yourself!
+
+### Features:
+- New World Game Timers (Example: Asmodemun, Glitterying Ebony, Phoenixweave, Runic Leather)
+- Basic Moderation Commands (Example: ban, unban, kick, votekick, clear)
+
+### Planned Features:
+- Logging System
+- Auto Moderation
+- Reaction Roles
+- Economy
+- Ticket System
+
+If you have any questions or would just like to be apart of a growing community of gamers and developers be sure to stop by my discord. 
