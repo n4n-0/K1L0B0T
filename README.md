@@ -1,2 +1,1 @@
-# K1L0B0T
-A Multiserver Discord Bot 
+<h1 align="center">K1L0B0T - Another Multiserver Discord Bot</h1>
