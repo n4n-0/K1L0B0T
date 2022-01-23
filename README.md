@@ -7,6 +7,9 @@
     <a href="https://www.discord.gg/P9GTWQrD3x">
         <img src="https://img.shields.io/badge/Discord-7289DA?style=for-the-badge&logo=discord&logoColor=white"/>
     </a>
+    <a href="https://www.patreon.com/danfrmspace">
+        <img src="https://img.shields.io/badge/Patreon-F96854?style=for-the-badge&logo=patreon&logoColor=white"/>
+    </a>
 </p>
 
 ## About:
