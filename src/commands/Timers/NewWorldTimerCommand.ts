@@ -93,9 +93,9 @@ export default class AsmoTimerCommand extends BaseCommand {
     
               message.channel.send({ embeds: [successEmbed] });
               setTimeout(() => {
-                const checkForEntry = this.newWorldTimerRepository.findOne({ guildId: message.guildId!, username: user, type: 'Asmodeum'}).then(checkForEntry => {
+                const checkForEntry = this.newWorldTimerRepository.findOne({ guildId: message.guildId!, username: user, type: 'Phoenix Weave'}).then(checkForEntry => {
                   if (checkForEntry) {
-                    this.newWorldTimerRepository.delete({ guildId: message.guildId!, username: user, type: 'Asmodeum'});
+                    this.newWorldTimerRepository.delete({ guildId: message.guildId!, username: user, type: 'Phoenix Weave'});
                     const successEmbed = new MessageEmbed()
                       .setColor('#c73002')
                       .setTitle(`Your Phoenix Weave timer has expired!`)
@@ -108,15 +108,103 @@ export default class AsmoTimerCommand extends BaseCommand {
             } else {
               const errorEmbed = new MessageEmbed()
                 .setColor('#c73002')
-                .setTitle('You already have an Asmodeum timer!')
-                .setDescription(`You can only have one Asmodeum timer at a time! It will expire on ${weaveEntry.endTime}`)
+                .setTitle('You already have an Phoenix Weave!')
+                .setDescription(`You can only have one Phoenix Weave at a time! It will expire on ${weaveEntry.endTime}`)
+                .setTimestamp();
+    
+              message.channel.send({ embeds: [errorEmbed] });
+            }
+            break;
+          case 'ebony':
+            const ebonyEntry = await this.newWorldTimerRepository.findOne({ guildId: message.guildId!, username: user, type: 'Glittering Ebony'});
+            if (!ebonyEntry) {
+              log(`${colors.white('[')}${colors.cyan('K1L0B0T')}${colors.white(']')} ${colors.cyan(`A Glittering Ebony timer has been started for ${message.author.username} in ${message.guild!.name}`)}`);
+              const startTime = DateTime.now().toFormat('DDDD HH:mm:ss');
+              const endTime  = DateTime.now().plus({ hours: 24}).toFormat('DDDD HH:mm:ss')
+              this.newWorldTimerRepository.insert({
+                guildId: message.guildId!,
+                username: user,
+                startTime: startTime,
+                endTime: endTime,
+                type: 'Glittering Ebony'
+              });
+              log(`${colors.white('[')}${colors.cyan('K1L0B0T')}${colors.white(']')} ${colors.cyan(`${args[1]}`)}`);
+              const successEmbed = new MessageEmbed()
+                .setColor('#c73002')
+                .setTitle('You have created a Glittering Ebony timer!')
+                .setDescription(`Your Glittering Ebony timer will be up on ${endTime}`)
+                .setTimestamp();
+    
+              message.channel.send({ embeds: [successEmbed] });
+              setTimeout(() => {
+                const checkForEntry = this.newWorldTimerRepository.findOne({ guildId: message.guildId!, username: user, type: 'Glittering Ebony'}).then(checkForEntry => {
+                  if (checkForEntry) {
+                    this.newWorldTimerRepository.delete({ guildId: message.guildId!, username: user, type: 'Glittering Ebony'});
+                    const successEmbed = new MessageEmbed()
+                      .setColor('#c73002')
+                      .setTitle(`Your Glittering Ebony timer has expired!`)
+                      .setDescription(`${message.author}, Your Glittering Ebony timer has expired!`)
+                      .setTimestamp();
+                    message.channel.send({ embeds: [successEmbed] });
+                  }
+                });
+              }, 8.64e+7)
+            } else {
+              const errorEmbed = new MessageEmbed()
+                .setColor('#c73002')
+                .setTitle('You already have an Glittering Ebony timer!')
+                .setDescription(`You can only have one Glittering Ebony timer at a time! It will expire on ${ebonyEntry.endTime}`)
+                .setTimestamp();
+    
+              message.channel.send({ embeds: [errorEmbed] });
+            }
+            break;
+          case 'runic':
+            const runicEntry = await this.newWorldTimerRepository.findOne({ guildId: message.guildId!, username: user, type: 'Runic Leather'});
+            if (!runicEntry) {
+              log(`${colors.white('[')}${colors.cyan('K1L0B0T')}${colors.white(']')} ${colors.cyan(`A Runic Leather timer has been started for ${message.author.username} in ${message.guild!.name}`)}`);
+              const startTime = DateTime.now().toFormat('DDDD HH:mm:ss');
+              const endTime  = DateTime.now().plus({ hours: 24}).toFormat('DDDD HH:mm:ss')
+              this.newWorldTimerRepository.insert({
+                guildId: message.guildId!,
+                username: user,
+                startTime: startTime,
+                endTime: endTime,
+                type: 'Runic Leather'
+              });
+              log(`${colors.white('[')}${colors.cyan('K1L0B0T')}${colors.white(']')} ${colors.cyan(`${args[1]}`)}`);
+              const successEmbed = new MessageEmbed()
+                .setColor('#c73002')
+                .setTitle('You have created a Runic Leather timer!')
+                .setDescription(`Your Runic Leather timer will be up on ${endTime}`)
+                .setTimestamp();
+    
+              message.channel.send({ embeds: [successEmbed] });
+              setTimeout(() => {
+                const checkForEntry = this.newWorldTimerRepository.findOne({ guildId: message.guildId!, username: user, type: 'Runic Leather'}).then(checkForEntry => {
+                  if (checkForEntry) {
+                    this.newWorldTimerRepository.delete({ guildId: message.guildId!, username: user, type: 'Runic Leather'});
+                    const successEmbed = new MessageEmbed()
+                      .setColor('#c73002')
+                      .setTitle(`Your Runic Leather timer has expired!`)
+                      .setDescription(`${message.author}, Your Runic Leather timer has expired!`)
+                      .setTimestamp();
+                    message.channel.send({ embeds: [successEmbed] });
+                  }
+                });
+              }, 8.64e+7)
+            } else {
+              const errorEmbed = new MessageEmbed()
+                .setColor('#c73002')
+                .setTitle('You already have an Runic Leather timer!')
+                .setDescription(`You can only have one Runic Leather timer at a time! It will expire on ${runicEntry.endTime}`)
                 .setTimestamp();
     
               message.channel.send({ embeds: [errorEmbed] });
             }
             break;
           default:
-            message.channel.send(`Please enter a valid argument. Example: ${config?.prefix}timer asmo`);
+          message.channel.send(`Please enter a valid argument. Example: ${config?.prefix}timer asmo`);
         }
         break;
       case 'check':
@@ -136,13 +224,39 @@ export default class AsmoTimerCommand extends BaseCommand {
             break;
           case 'weave':
             const weaveEntry = await this.newWorldTimerRepository.findOne({ guildId: message.guildId!, username: user, type: 'Phoenix Weave'});
-            if (!asmoEntry) {
-              message.channel.send('You do not have aa Phoenix Weave timer.');
+            if (!weaveEntry) {
+              message.channel.send('You do not have a Phoenix Weave timer.');
             } else {
               const checkEmbed = new MessageEmbed()
                 .setColor('#c73002')
                 .setTitle('Phoenix Weave Timer')
-                .setDescription(`Your asmodeum timer will be up on ${asmoEntry.endTime}`)
+                .setDescription(`Your asmodeum timer will be up on ${weaveEntry.endTime}`)
+                .setTimestamp();
+              message.channel.send({ embeds: [checkEmbed] });
+            }
+            break;
+          case 'ebony':
+            const ebonyEntry = await this.newWorldTimerRepository.findOne({ guildId: message.guildId!, username: user, type: 'Glittering Ebony'});
+            if (!ebonyEntry) {
+              message.channel.send('You do not have a Glittering Ebony timer.');
+            } else {
+              const checkEmbed = new MessageEmbed()
+                .setColor('#c73002')
+                .setTitle('Glittering Ebony Timer')
+                .setDescription(`Your Glittering Ebony timer will be up on ${ebonyEntry.endTime}`)
+                .setTimestamp();
+              message.channel.send({ embeds: [checkEmbed] });
+            }
+            break;
+          case 'runic':
+            const runicEntry = await this.newWorldTimerRepository.findOne({ guildId: message.guildId!, username: user, type: 'Runic Leather'});
+            if (!runicEntry) {
+              message.channel.send('You do not have a Runic Leather timer.');
+            } else {
+              const checkEmbed = new MessageEmbed()
+                .setColor('#c73002')
+                .setTitle('Runic Leather Timer')
+                .setDescription(`Your Runic Leather timer will be up on ${runicEntry.endTime}`)
                 .setTimestamp();
               message.channel.send({ embeds: [checkEmbed] });
             }
