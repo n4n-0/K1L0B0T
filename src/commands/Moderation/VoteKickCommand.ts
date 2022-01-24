@@ -1,6 +1,7 @@
 import { Guild, Message, MessageEmbed } from "discord.js";
 import BaseCommand from "../../utils/structures/BaseCommand";
 import DiscordClient from "../../client/client";
+import { serverLog } from "../../utils/UtilFunctions";
 const colors = require('colors');
 const log = console.log;
 
@@ -52,9 +53,11 @@ export default class VoteKickCommand extends BaseCommand {
                         kickEmbed.setDescription(`${user} has been kicked from ${message.guild!.name} by ${message.author}`)
                         message.channel.send({ embeds: [kickEmbed] })
                         message.guild?.members.kick(user, reason);
+                        serverLog(message.guild!.id, message.guild!.name, `${message.author.username} has kicked ${user}`)
                     } else {
                         message.channel.send({ embeds: [kickEmbed] })
                         message.guild?.members.kick(user, reason);
+                        serverLog(message.guild!.id, message.guild!.name, `${message.author.username} has kicked ${user} for the following reason: ${reason}`)
                     }
                 } else {
                     const noKick = new MessageEmbed()

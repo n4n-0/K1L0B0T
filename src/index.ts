@@ -2,6 +2,7 @@ require('dotenv').config();
 import { registerCommands, registerEvents } from './utils/registry';
 import config from '../config.json';
 import DiscordClient from './client/client';
+import { loadUtils } from './utils/UtilFunctions';
 import { Collection, Intents } from 'discord.js';
 import { createConnection, getRepository } from 'typeorm';
 import { GuildConfiguration } from '../typeorm/entities/GuildConfiguration';
@@ -38,6 +39,7 @@ const bot = new DiscordClient({
 
   await registerCommands(bot, '../commands');
   await registerEvents(bot, '../events');
+  await loadUtils(bot);
   await bot.login(process.env.TOKEN);
 })();
 

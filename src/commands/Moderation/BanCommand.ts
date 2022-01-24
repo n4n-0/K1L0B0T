@@ -3,6 +3,7 @@ import BaseCommand from '../../utils/structures/BaseCommand';
 import DiscordClient from '../../client/client';
 import { getRepository } from 'typeorm';
 import { BanLogConfiguration } from '../../../typeorm/entities/BanLogConfiguration';
+import { serverLog } from '../../utils/UtilFunctions';
 
 export default class BanCommand extends BaseCommand {
   constructor(
@@ -62,5 +63,6 @@ export default class BanCommand extends BaseCommand {
 
     await member.send({ embeds: [DM] })
     message.guild?.members.ban(member, { reason: reason })
+    serverLog(message.guild!.id, message.guild!.name, `${member} has been banned by ${message.author} for the following reason: ${reason}`)
   }
  }

@@ -1,6 +1,7 @@
 import { Message, MessageEmbed } from 'discord.js';
 import BaseCommand from '../../utils/structures/BaseCommand';
 import DiscordClient from '../../client/client';
+import { serverLog } from '../../utils/UtilFunctions';
 const colors = require('colors');
 const log = console.log;
 
@@ -33,10 +34,10 @@ export default class ClearCommand extends BaseCommand {
       if(user) {
         const filtered = messages.filter(m => m.author.id === user.id);
         filtered.forEach(m => m.delete());
-        message.channel.send(`Successfully deleted ${filtered.size} messages from ${user.username}`)
+        serverLog(message.guild!.id, message.guild!.name, `${message.author.username} has deleted ${filtered.size} messages from ${user.username}`)
       } else {
         messages.forEach(m => m.delete());
-        message.channel.send(`Successfully deleted ${amount} messages`);
+        serverLog(message.guild!.id, message.guild!.name, `${message.author.username} has cleared ${amount} messages`)
       }
     })
   }

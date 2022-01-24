@@ -3,6 +3,7 @@ import BaseCommand from '../../utils/structures/BaseCommand';
 import DiscordClient from '../../client/client';
 import { getRepository } from 'typeorm';
 import { BanLogConfiguration } from '../../../typeorm/entities/BanLogConfiguration';
+import { serverLog } from '../../utils/UtilFunctions';
 const colors = require('colors');
 const log = console.log;
 
@@ -42,6 +43,7 @@ export default class UnbanCommand extends BaseCommand {
           .setDescription(`${bannedUser.user.username} has been unbanned from ${message.guild!.name} by ${message.author}`)
           .setFooter({ text: `${message.guild?.name} Moderation :: ${message.author.username}` })
         message.channel.send({ embeds: [unBanEmbed] })
+        serverLog(message.guild!.id, message.guild!.name, `${bannedUser.user.username} has been unbanned from ${message.guild!.name} by ${message.author}`);
       }
     })
   }

@@ -4,6 +4,7 @@ import BaseEvent from '../utils/structures/BaseEvent';
 import DiscordClient from '../client/client';
 import { getRepository } from 'typeorm';
 import { GuildConfiguration } from '../../typeorm/entities/GuildConfiguration';
+import { botLog } from '../utils/UtilFunctions';
 
 
 const colors = require('colors');
@@ -30,6 +31,7 @@ export default class GuildCreateEvent extends BaseEvent {
     } else {
       client.configs.set(guild.id, guildConfig);
       log(`${colors.white('[')}${colors.cyan('K1L0B0T')}${colors.white(']')} ${colors.cyan(`The bot has connected to the server ${guild.name} and it already has a configuration`)}`);
+      botLog(`K1L0B0T has connected to the server ${guild.name} with ${guild.memberCount} members. The bot is now in ${client.guilds.cache.size} servers.`);
     }
   }
 }
