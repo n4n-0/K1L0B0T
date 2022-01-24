@@ -7,8 +7,11 @@
     <a href="https://www.discord.gg/P9GTWQrD3x">
         <img src="https://img.shields.io/badge/Discord-7289DA?style=for-the-badge&logo=discord&logoColor=white"/>
     </a>
+    <a href="https://www.patreon.com/danfrmspace">
+        <img src="https://img.shields.io/badge/Patreon-F96854?style=for-the-badge&logo=patreon&logoColor=white"/>
+    </a>
 </p>
----
+
 ## About:
 **K1L0B0T** is a bot I designed to further develop my javascript/ typescript abilities. This bot is capable of joining multiple server allowing them to each
 have their own configurations. The bot is still very new right now and if you invite it to you server expect frequent updates. This is also 100% open source so feel free to deploy it yourself!
