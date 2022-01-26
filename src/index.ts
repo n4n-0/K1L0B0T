@@ -25,8 +25,9 @@ const bot = new DiscordClient({
     host: process.env.DB_HOST,
     port: 3306,
     username: process.env.DB_USER,
+    password: process.env.DB_PASS,
     database: process.env.DB_NAME,
-    synchronize: false,
+    synchronize: true,
     entities: [GuildConfiguration, NewWorldTimers, BanLogConfiguration]
   });
   const configRepo = getRepository(GuildConfiguration);
