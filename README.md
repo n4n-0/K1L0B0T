@@ -19,9 +19,10 @@ have their own configurations. The bot is still very new right now and if you in
 ### Features:
 - New World Game Timers (Example: Asmodemun, Glitterying Ebony, Phoenixweave, Runic Leather)
 - Basic Moderation Commands (Example: ban, unban, kick, votekick, clear)
+- Logging System
 
 ### Planned Features:
-- Logging System
+- Warn System/ User Stats
 - Auto Moderation
 - Reaction Roles
 - Economy
